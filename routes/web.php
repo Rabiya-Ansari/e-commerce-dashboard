@@ -27,6 +27,9 @@ Route::get('/updateCategory/{id}', [ProductController::class, "updateCategories"
 
 Route::post('/updatingCategory/{id}', [ProductController::class, "updatingCategories"]);
 
+Route::get('/deleteCategories/{id}', [ProductController::class, "deleteCategories"]);
+
+
 Route::get('/addProducts', function () {
     return view('addProducts');
 });

@@ -11,11 +11,11 @@ class ProductController extends Controller
 {
     public function addCategories(Request $req)
     {
-        $category = new Categories();
-        $category->categories_name = $req->name;
-        $category->category_description = $req->description;
+        $variable = new Categories();
+        $variable->categories_name = $req->name;
+        $variable->category_description = $req->description;
 
-        $category->save();
+        $variable->save();
 
         return redirect('/viewCategories');
     }
@@ -23,49 +23,55 @@ class ProductController extends Controller
 
     public function getCategory()
     {
-        $category = new Categories();
-        $data = $category::all();
+        $variable = new Categories();
+        $data = $variable::all();
         return view('viewCategories', compact('data'));
     }
 
     public function updateCategories($id)
     {
-        $category = new Categories();
-        $data = $category::find($id);
+        $variable = new Categories();
+        $data = $variable::find($id);
 
         return view("updateCategory", compact("data"));
     }
 
     public function updatingCategories(Request $req, $id)
     {
-        $category = Categories::find($id);
+        $variable = Categories::find($id);
 
-        $category->categories_name = $req->name;
-        $category->category_description = $req->description;
+        $variable->categories_name = $req->name;
+        $variable->category_description = $req->description;
 
-        $category->save();
+        $variable->save();
 
         return redirect("/viewCategories");
     }
 
+    public function deleteCategories($id){
+        $variable= Categories::find($id);
+        $variable->delete();
+
+        return redirect("/viewCategories");
+    }
 
     public function addProducts(Request $req)
     {
-        $category = new Products();
-        $category->product_name = $req->name;
-        $category->price = $req->price;
-        $category->quantity = $req->quantity;
-        $category->detail = $req->details;
+        $variable = new Products();
+        $variable->product_name = $req->name;
+        $variable->price = $req->price;
+        $variable->quantity = $req->quantity;
+        $variable->detail = $req->details;
 
-        $category->save();
+        $variable->save();
 
         return redirect('/viewProducts');
     }
 
     public function getProduct()
     {
-        $category = new Products();
-        $data = $category::all();
+        $variable = new Products();
+        $data = $variable::all();
         return view('viewProducts', compact('data'));
     }
 }
