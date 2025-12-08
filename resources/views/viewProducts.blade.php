@@ -7,7 +7,7 @@
                 <th scope="col">Product Name</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Price</th>
-                <th scope="col">Description</th>
+                <th scope="col">Details</th>
                 <th scope="col">Actions</th>
             </tr>
             @foreach ($data as $value)
@@ -20,8 +20,8 @@
                     <td>{{ $value['price'] }}</td>
                     <td>{{ $value['detail'] }}</td>
                     <td>
-                        <button class="btn btn-primary"><a href="">Update</a></button>
-                        <button class="btn btn-danger"><a href="">Delete</a></button>
+                        <button class="btn btn-primary"><a href="/updateProducts/{{ $value['id'] }}">Update</a></button>
+                        <button class="btn btn-danger"><a href="/deleteProducts/{{ $value['id'] }}">Delete</a></button>
                     </td>
                 </tr>
 

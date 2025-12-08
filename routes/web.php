@@ -30,6 +30,11 @@ Route::post('/updatingCategory/{id}', [ProductController::class, "updatingCatego
 Route::get('/deleteCategories/{id}', [ProductController::class, "deleteCategories"]);
 
 
+
+ /* ---------------------------------------
+    |   PRODUCTS ROUTE
+    ----------------------------------------*/
+
 Route::get('/addProducts', function () {
     return view('addProducts');
 });
@@ -40,6 +45,22 @@ Route::get('/viewProducts', function () {
     return view('viewProducts');
 });
 
-
-
 Route::get('viewProducts',[ProductController::class,'getProduct']);
+
+Route::get('/updateProducts/{id}', [ProductController::class, "updateProducts"]);
+
+Route::post('/updatingProducts/{id}', [ProductController::class, "updatingProduct"]);
+
+Route::get('/deleteProducts/{id}',[ProductController::class,'deleteProduct']);
+
+/* ---------------------------------------
+    |   All order / Pending orders
+    ----------------------------------------*/
+
+Route::get('/allOrders', function(){
+    return view('allorders');
+});
+
+Route::get('/pendingOrders', function(){
+    return view('pendingOrders');
+});

@@ -11,11 +11,11 @@ class ProductController extends Controller
 {
     public function addCategories(Request $req)
     {
-        $variable = new Categories();
-        $variable->categories_name = $req->name;
-        $variable->category_description = $req->description;
+        $users = new Categories();
+        $users->categories_name = $req->name;
+        $users->category_description = $req->description;
 
-        $variable->save();
+        $users->save();
 
         return redirect('/viewCategories');
     }
@@ -23,55 +23,92 @@ class ProductController extends Controller
 
     public function getCategory()
     {
-        $variable = new Categories();
-        $data = $variable::all();
+        $users = new Categories();
+        $data = $users::all();
         return view('viewCategories', compact('data'));
     }
 
     public function updateCategories($id)
     {
-        $variable = new Categories();
-        $data = $variable::find($id);
+        $users = new Categories();
+        $data = $users::find($id);
 
         return view("updateCategory", compact("data"));
     }
 
     public function updatingCategories(Request $req, $id)
     {
-        $variable = Categories::find($id);
+        $users = Categories::find($id);
 
-        $variable->categories_name = $req->name;
-        $variable->category_description = $req->description;
+        $users->categories_name = $req->name;
+        $users->category_description = $req->description;
 
-        $variable->save();
+        $users->save();
+
+        return redirect("/viewCategories");
+    }
+
+    public function deleteCategories($id)
+    {
+        $users = Categories::find($id);
+        $users->delete();
 
         return redirect("/viewCategories");
     }
 
-    public function deleteCategories($id){
-        $variable= Categories::find($id);
-        $variable->delete();
 
-        return redirect("/viewCategories");
-    }
+    /* ---------------------------------------
+   |   PRODUCTS CRUD
+   ----------------------------------------*/
 
     public function addProducts(Request $req)
     {
-        $variable = new Products();
-        $variable->product_name = $req->name;
-        $variable->price = $req->price;
-        $variable->quantity = $req->quantity;
-        $variable->detail = $req->details;
+        $users = new Products();
+        $users->product_name = $req->name;
+        $users->price = $req->price;
+        $users->quantity = $req->quantity;
+        $users->detail = $req->details;
 
-        $variable->save();
+        $users->save();
 
         return redirect('/viewProducts');
     }
 
     public function getProduct()
     {
-        $variable = new Products();
-        $data = $variable::all();
+        $users = new Products();
+        $data = $users::all();
         return view('viewProducts', compact('data'));
     }
+
+    public function updateProducts($id)
+    {
+        $users = new Products();
+        $data = $users::find($id);
+
+        return view("updateProducts", compact("data"));
+    }
+
+    public function updatingProduct(Request $req, $id)
+    {
+        $users = Products::find($id);
+
+        $users->product_name = $req->name;
+        $users->quantity = $req->quantity;
+        $users->price = $req->price;
+        $users->detail = $req->detail;
+
+        $users->save();
+
+        return redirect("/viewProducts");
+    }
+
+    public function deleteProduct($id)
+    {
+        $users = Products::find($id);
+        $users->delete();
+
+        return redirect("viewProducts");
+    }
+
 }
