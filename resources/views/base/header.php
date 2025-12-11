@@ -179,7 +179,7 @@
       <!-- End Sidebar scroll-->
     </aside>
     <!--  Sidebar End -->
-       <!--  Main wrapper -->
+    <!--  Main wrapper -->
     <div class="body-wrapper">
       <!--  Header Start -->
       <header class="app-header">
@@ -209,7 +209,7 @@
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-               
+
               <li class="nav-item dropdown">
                 <a class="nav-link " href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
@@ -229,7 +229,13 @@
                       <i class="ti ti-list-check fs-6"></i>
                       <p class="mb-0 fs-3">My Task</p>
                     </a>
-                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                    <form action="/logout" method="POST">
+
+                    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                      <button
+                        class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</button>
+
+                    </form>
                   </div>
                 </div>
               </li>
