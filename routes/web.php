@@ -8,9 +8,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/index', function() {
-    return view('UI.index');
-});
+Route::get('/index', [ProductController::class,'fetchProducts']);
+Route::get('/index', [ProductController::class,'fetchCategory']);
+
 
 Route::get('/addCategories', function () {
     return view('addCategories');

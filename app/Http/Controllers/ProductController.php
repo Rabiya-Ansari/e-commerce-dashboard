@@ -111,4 +111,16 @@ class ProductController extends Controller
         return redirect("viewProducts");
     }
 
+    public function fetchProducts(){
+        $users = new Products();
+        $data = $users::all();
+        return view('UI.index', compact('data'));
+    }
+
+     public function fetchCategory(){
+        $users = new Categories();
+        $data = $users::all();
+        return view('UI.index', compact('data'));
+    }
+
 }
